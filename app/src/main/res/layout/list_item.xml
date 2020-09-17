@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:orientation="horizontal">
+
+
+
+
+    <TextView
+        android:layoutDirection="rtl"
+        android:textDirection="rtl"
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="5dp"
+        android:text="יוסי כהן"
+        android:layout_weight="9"
+        android:textColor="#000000"
+        android:textSize="24dp" />
+
+    <ImageView
+        android:layout_marginTop="12dp"
+        android:layout_weight="1"
+        android:layoutDirection="ltr"
+        android:id="@+id/bDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_delete_24" />
+
+
+</LinearLayout>

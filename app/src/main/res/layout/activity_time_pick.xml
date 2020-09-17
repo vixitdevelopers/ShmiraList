@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TimePick">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           >
+            <LinearLayout
+                android:id="@+id/ll_time_start"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="שעת התחלה"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:textStyle="bold"
+                    android:textSize="24sp"
+                    />
+                <com.dani.shmiralist.CustomTimePicker
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:id="@+id/time_start"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_time_end"
+                android:layout_below="@+id/ll_time_start"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="שעת סוף"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:textStyle="bold"
+                    android:textSize="24sp"
+                    />
+                <com.dani.shmiralist.CustomTimePicker
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:id="@+id/time_end"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/time_bsave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_time_end"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="#80DEEA"
+                android:text="שמור"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </ScrollView>
+</androidx.appcompat.widget.LinearLayoutCompat>

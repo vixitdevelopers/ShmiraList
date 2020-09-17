@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <ListView
+        android:id="@+id/list_view_places"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:visibility="visible" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/list_view_places"
+        android:background="@android:color/darker_gray" />
+
+
+    <RelativeLayout
+        android:id="@+id/places_rl1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/list_view_places"
+        >
+
+
+
+        <EditText
+            android:id="@+id/etAdd_places"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:gravity="center"
+            android:textColor="#B8B8B8"
+            android:inputType="text"
+            android:imeOptions="actionSend"
+            android:maxLines="1"
+            android:textSize="18dp"/>
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/divider_places"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/places_rl1"
+        android:background="@android:color/darker_gray" />
+
+
+    <Button
+        android:id="@+id/bSave_places"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/divider_places"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="#80DEEA"
+        android:text="שמור"
+        android:textColor="#000000"
+        android:textStyle="bold" />
+</RelativeLayout>
