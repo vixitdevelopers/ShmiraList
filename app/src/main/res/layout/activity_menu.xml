@@ -153,18 +153,68 @@
             android:textColor="#000000" />
 
     </LinearLayout>
-    <Button
-        android:layout_margin="8dp"
-        android:id="@+id/bTime"
+    <TextView
+        android:layout_below="@id/ll_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingRight="35dp"
-        android:paddingLeft="35dp"
-        android:layout_weight="1"
-        android:layout_below="@id/ll_time"
-        android:background="@android:color/holo_blue_bright"
-        android:text="הגדר שעות"
+        android:textSize="16sp"
+        android:text="סך הכל: 0 שעות שמירה"
         android:layout_centerHorizontal="true"
-        android:textStyle="bold"
+        android:layout_margin="8dp"
+        android:id="@+id/tv_amount_hours"
         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ll_prefs"
+        android:layout_below="@id/tv_amount_hours"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:layoutDirection="rtl"
+        android:textDirection="rtl"
+        >
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/cb_circle"
+            android:layout_marginRight="8dp"
+            android:textSize="16sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="עגל דקות"
+            android:id="@+id/tv_circle"
+            />
+        <NumberPicker
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="16sp"
+            android:id="@+id/spinner_circle"
+            android:layout_marginRight="8dp"
+            android:visibility="gone"
+            />
+    </LinearLayout>
+
+    <Button
+
+        android:id="@+id/bGo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:text="יאללה"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:paddingRight="16dp"
+        android:paddingLeft="16dp"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+
+        />
+
+
 </RelativeLayout>
