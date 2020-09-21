@@ -45,6 +45,7 @@ class TimeDifference {
     }
 
     public int getTotalInMin(){
+
         int total = hours*60;
         total += minutes;
         return total;

@@ -59,6 +59,11 @@ public class Result extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
         });
+        String resultFromActivity = getResult("result");
+        if (resultFromActivity!=null){
+            tvResult.setText(resultFromActivity);
+            return;
+        }
         //get stuff:
         names = getList("names");
         places = getList("places");
@@ -66,6 +71,9 @@ public class Result extends AppCompatActivity {
         end = getTime("end");
         INTERVAL = getPrefsInt("interval");
         max = getPrefsFloat("max")*60;//to minutes.
+        int totalInMin = td.getTotalInMin();
+        if (totalInMin==0)
+            restart();
         if (max==0)
             max = 10_000_000;
         try {
@@ -96,10 +104,24 @@ public class Result extends AppCompatActivity {
 
     }
 
+
+    private void restart() {
+        SharedPreferences.Editor editor = getSharedPreferences(Names.PREFS, MODE_PRIVATE).edit();
+        editor.putString("result",null);
+        editor.apply();
+        startActivity(new Intent(Result.this,MainActivity.class));
+    }
+
     private int getPrefsInt(String key) {
         SharedPreferences prefs = getSharedPreferences(Names.PREFS, MODE_PRIVATE);
         int interval = prefs.getInt(key, 1);
         return interval;
+    }
+
+    private String getResult(String key) {
+        SharedPreferences prefs = getSharedPreferences(Names.PREFS, MODE_PRIVATE);
+        String result = prefs.getString(key, null);
+        return result;
     }
 
     private float getPrefsFloat(String key) {

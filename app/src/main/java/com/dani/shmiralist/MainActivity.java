@@ -2,6 +2,7 @@ package com.dani.shmiralist;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -27,7 +28,7 @@ import java.util.Set;
 public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
 
     TextView tv_names, tv_places, tv_amount_names, tv_amount_places, tvStart, tvEnd, tv_amount_hours;
-    Button bGo;//fix this!! bPlaces, bNames;
+    Button bGo;
     CheckBox cbCircle, cbMax;
     ArrayList<String> names, places;
     String start, end;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
     LinearLayout ll_names, ll_places;
 
-    private InterstitalAd
+
     char timePicked; //which timer has been clicked 's'-start, 'e' - end
 
     @Override
@@ -70,15 +71,15 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
     private void getPrefs() {
         SharedPreferences prefs = getSharedPreferences(Names.PREFS, MODE_PRIVATE);
-        if (prefs.getString("result",null)!=null)
-            startActivity(new Intent(MainActivity.this,Result.class));
+        if (prefs.getString("result", null) != null)
+            startActivity(new Intent(MainActivity.this, Result.class));
         boolean maxChecked = prefs.getBoolean("cb_max", false);
         boolean circleChecked = prefs.getBoolean("cb_circle", false);
         if (maxChecked)
             spinner_max.setVisibility(View.VISIBLE);
         else
             spinner_max.setVisibility(View.GONE);
-        if(circleChecked)
+        if (circleChecked)
             spinner_circle.setVisibility(View.VISIBLE);
         else
             spinner_circle.setVisibility(View.GONE);
@@ -126,7 +127,9 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                     Toast.makeText(MainActivity.this, "חסרים דברים אחי",
                             Toast.LENGTH_SHORT).show();
                     return;
-                }
+                } else if (names.size() > places.size())
+                    Toast.makeText(MainActivity.this, "אי אפשר להיות בשני מקומות בו זמנית אחי",
+                            Toast.LENGTH_SHORT);
 
                 startActivity(new Intent(MainActivity.this, Result.class));
             }
@@ -173,16 +176,15 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         cbMax.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
+                if (isChecked) {
                     spinner_max.setVisibility(View.VISIBLE);
                     SharedPreferences.Editor editor = getSharedPreferences(Names.PREFS, MODE_PRIVATE).edit();
-                    editor.putBoolean("cb_max",true);
+                    editor.putBoolean("cb_max", true);
                     editor.apply();
-                }
-                else{
+                } else {
                     spinner_max.setVisibility(View.GONE);
                     SharedPreferences.Editor editor = getSharedPreferences(Names.PREFS, MODE_PRIVATE).edit();
-                    editor.putBoolean("cb_circle",false);
+                    editor.putBoolean("cb_circle", false);
                     editor.apply();
                 }
             }
@@ -193,12 +195,12 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                 if (isChecked) {
                     spinner_circle.setVisibility(View.VISIBLE);
                     SharedPreferences.Editor editor = getSharedPreferences(Names.PREFS, MODE_PRIVATE).edit();
-                    editor.putBoolean("cb_circle",true);
+                    editor.putBoolean("cb_circle", true);
                     editor.apply();
                 } else {
                     spinner_circle.setVisibility(View.GONE);
                     SharedPreferences.Editor editor = getSharedPreferences(Names.PREFS, MODE_PRIVATE).edit();
-                    editor.putBoolean("cb_circle",false);
+                    editor.putBoolean("cb_circle", false);
                     editor.apply();
                 }
             }
