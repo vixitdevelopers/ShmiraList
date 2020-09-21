@@ -6,62 +6,247 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <LinearLayout
 
-    <ListView
-        android:id="@+id/list_view"
+        android:id="@+id/ll_names"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:visibility="visible" />
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginLeft="12dp"
+        android:background="#E6DCDC"
+        android:layoutDirection="rtl"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:textDirection="rtl">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/list_view"
-        android:background="@android:color/darker_gray" />
-
-
-    <RelativeLayout
-        android:id="@+id/relative_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/list_view"
-       >
-
-
-
-        <EditText
-            android:id="@+id/etAdd"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
-            android:gravity="center"
-            android:textColor="#B8B8B8"
-            android:inputType="text"
-            android:imeOptions="actionSend"
-            android:maxLines="1"
-            android:textSize="18dp"/>
+            android:text="שומרים:"
+            android:textColor="#1B5E20"
+            android:textSize="24dp" />
 
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/tvNames"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="אין שומרים. הוסף שמות."
+            android:textColor="#000000"
+            android:textSize="18dp" />
 
-    <View
-        android:id="@+id/divider"
+        <TextView
+            android:id="@+id/tv_amount_names"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="סך הכל: 0 שומרים"
+            android:textSize="12dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="12dp"
+        android:background="#E6DCDC"
+        android:layout_below="@id/ll_names"
+        android:id="@+id/ll_places"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/relative_layout"
-        android:background="@android:color/darker_gray" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layoutDirection="rtl"
+        android:textDirection="rtl"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="12dp"
+        android:padding="5dp"
+        >
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="עמדות:"
+            android:textSize="24dp"
+            android:textColor="#1B5E20" />
 
-    <Button
-        android:id="@+id/bSave"
+        <TextView
+            android:id="@+id/tvPlaces"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="אין עמדות. הוסף עמדות שמירה."
+            android:textColor="#000000"
+            android:textSize="18dp" />
+        <TextView
+            android:id="@+id/tv_amount_places"
+            android:textSize="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="סך הכל: 0 עמדות" />
+    </LinearLayout>
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/ll_buttons"-->
+<!--        android:layout_below="@+id/ll_places"-->
+<!--        android:layout_margin="15dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <Button-->
+<!--            android:layout_margin="8dp"-->
+<!--            android:id="@+id/bPlaces"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@color/colorAccent"-->
+<!--            android:text="הגדר עמדות"-->
+<!--            android:textStyle="bold"-->
+<!--            />-->
+
+<!--        <Button-->
+<!--            android:layout_margin="8dp"-->
+<!--            android:id="@+id/bNames"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@android:color/holo_blue_light"-->
+<!--            android:text="הגדר שומרים"-->
+<!--            android:textStyle="bold"-->
+<!--            />-->
+<!--    </LinearLayout>-->
+
+    <LinearLayout
+
+        android:id="@+id/ll_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginLeft="12dp"
+        android:layoutDirection="rtl"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:layout_below="@id/ll_places"
+        android:textDirection="rtl">
+<!--        fix this-->
+        <TextView
+            android:id="@+id/tv_start_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="5"
+            android:background="#E6DCDC"
+            android:gravity="center"
+            android:maxLines="2"
+            android:padding="8dp"
+            android:shadowColor="#FFFFFF"
+            android:text="שעה התחלה: "
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/tv_end_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="5"
+            android:background="#E6DCDC"
+            android:gravity="center"
+            android:maxLines="2"
+            android:padding="8dp"
+            android:text="שעה סוף: "
+            android:textColor="#000000" />
+
+    </LinearLayout>
+    <TextView
+        android:layout_below="@id/ll_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/divider"
+        android:textSize="16sp"
+        android:text="סך הכל: 0 שעות שמירה"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:background="#80DEEA"
-        android:text="שמור"
-        android:textColor="#000000"
-        android:textStyle="bold" />
+        android:layout_margin="8dp"
+        android:id="@+id/tv_amount_hours"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ll_prefs"
+        android:layout_below="@id/tv_amount_hours"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:layoutDirection="rtl"
+        android:textDirection="rtl"
+        >
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/cb_circle"
+            android:layout_marginRight="8dp"
+            android:textSize="16sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="עגל דקות לכפולות של: "
+            android:id="@+id/tv_circle"
+            />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:id="@+id/spinner_circle"
+            android:layout_marginRight="8dp"
+            android:visibility="gone"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ll_prefs2"
+        android:layout_below="@id/ll_prefs"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:layoutDirection="rtl"
+        android:textDirection="rtl"
+        >
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/cb_max"
+            android:layout_marginRight="8dp"
+            android:textSize="16sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="מקסימום שעות ברצף: "
+            />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:id="@+id/spinner_max"
+            android:layout_marginRight="8dp"
+            android:visibility="visible"
+            />
+    </LinearLayout>
+    <Button
+
+        android:id="@+id/bGo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:text="יאללה"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:paddingRight="16dp"
+        android:paddingLeft="16dp"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+
+        />
+
+
 </RelativeLayout>

@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -21,10 +23,11 @@ public class Places extends AppCompatActivity {
 
     ArrayList<String> places;
     ListView listView;
-    Button bSave;
+    Button bSave, bAdd;
     EditText etAdd;
     CustomAdapter adapter;
     String[] etHint = {"הוסף שמות של עמדות +", "הוסף +"};
+    boolean isKeyboardOpen;
 
     public static final String PREFS = "shared_prefrences";
 
@@ -36,6 +39,7 @@ public class Places extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.list_view_places);
         bSave = (Button) findViewById(R.id.bSave_places);
         etAdd = (EditText) findViewById(R.id.etAdd_places);
+        bAdd = (Button) findViewById(R.id.bAdd_place);
 
 
         places = getPlaces();
@@ -55,7 +59,7 @@ public class Places extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 setPlaces(places);
-                startActivity(new Intent(Places.this, menu.class));
+                startActivity(new Intent(Places.this, MainActivity.class));
             }
         });
 
@@ -71,24 +75,66 @@ public class Places extends AppCompatActivity {
                 return false;
             }
         });
+        etAdd.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                setRightButton('a');
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (etAdd.getText().toString().matches(""))
+                    setRightButton('s');
+            }
+        });
+        bAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                places.add(etAdd.getText().toString());
+                adapter.notifyDataSetChanged();
+                etAdd.setText("");
+                etAdd.setHint(etHint[1]);
+                setRightButton('s');
+            }
+        });
+
 
     }
 
-    private ArrayList<String> getPlaces(){
+    private void setRightButton(char button) {
+        switch (button){
+            case 's':
+                bAdd.setVisibility(View.GONE);
+                bSave.setVisibility(View.VISIBLE);
+                break;
+            case 'a':
+                bSave.setVisibility(View.GONE);
+                bAdd.setVisibility(View.VISIBLE);
+                break;
+        }
+    }
+
+    private ArrayList<String> getPlaces() {
         ArrayList<String> places = new ArrayList<>();
         SharedPreferences prefs = getSharedPreferences(PREFS, MODE_PRIVATE);
-        Set<String> places_set= prefs.getStringSet("places",null);
-        if (places_set==null)
+        Set<String> places_set = prefs.getStringSet("places", null);
+        if (places_set == null)
             return places;
         for (String place : places_set)
             places.add(place);
         return places;
     }
-    private void setPlaces(ArrayList<String> places){
-        SharedPreferences.Editor editor = getSharedPreferences(PREFS,MODE_PRIVATE).edit();
+
+    private void setPlaces(ArrayList<String> places) {
+        SharedPreferences.Editor editor = getSharedPreferences(PREFS, MODE_PRIVATE).edit();
         Set<String> places_set = new HashSet<String>();
         places_set.addAll(places);
-        editor.putStringSet("places",places_set);
+        editor.putStringSet("places", places_set);
         editor.apply();
     }
 

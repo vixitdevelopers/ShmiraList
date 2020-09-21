@@ -25,6 +25,13 @@ class TimeDifference {
         minutes = (int) (difference - (1000 * 60 * 60 * 24 * days) - (1000 * 60 * 60 * hours)) / (1000 * 60);
     }
 
+    public static String addTime(String start, int addedMin) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        Date startDate = sdf.parse(start);
+        long millisToAdd = addedMin*60_000;
+        startDate.setTime(startDate.getTime()+millisToAdd);
+        return sdf.format(startDate);
+    }
     public int getDays() {
         return days;
     }
@@ -49,10 +56,11 @@ class TimeDifference {
         else if (hours>0)
             difference = hours +" שעות ";
         else if (minutes>0)
-            difference = minutes + " דקות";
+            difference = minutes + " דקות ";
         else
             difference = " 0 שעות";
         return difference;
 
     }
+
 }
